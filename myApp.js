@@ -10,14 +10,15 @@ app.get("/",(req,res)=>{
     res.sendFile(absolutePath)
 })
 
-app.get("/json",(req,res)=>{
-    if (process.env.MESSAGE_STYLE === "uppercase") {
-        var response = "Hello json".toUpperCase() 
-    } else {
-        var response = "Hello json"
-    }
-    res.json({"message":response})  
-})
+var message= 'Hello json';
+app.get("/json", (req, res) => {
+  if ( process.env['MESSAGE_STYLE'] === "uppercase") {
+      res.json({ "message": message.toUpperCase() });
+  }
+  else {
+    res.json({ "message": message });
+  }
+});
 
 
 
