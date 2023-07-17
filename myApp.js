@@ -9,10 +9,10 @@ app.use("/public",express.static(__dirname + '/public'))
 app.get("/",(req,res)=>{
     res.sendFile(absolutePath)
 })
-
+let value = process.env.MESSAGE_STYLE
 var message= 'Hello json';
 app.get("/json", (req, res) => {
-  if ( process.env['MESSAGE_STYLE'] === "uppercase") {
+  if ( value === "uppercase") {
       res.json({ "message": message.toUpperCase() });
   }
   else {
